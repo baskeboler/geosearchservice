@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "com.geegee.geo-search.url",
+      "type": "java.lang.String",
+      "description": "Description for com.geegee.geo-search.url."
+    }
+  ]
+}
