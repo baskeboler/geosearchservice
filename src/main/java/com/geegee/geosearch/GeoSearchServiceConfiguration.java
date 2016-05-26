@@ -26,5 +26,17 @@ public class GeoSearchServiceConfiguration {
 
         List<GeoSearchResult> results = service.search("montevideo");
         results.forEach(geoSearchResult -> System.out.println(geoSearchResult.toString()));
+
+        results.stream()
+                .map(geoSearchResult -> {
+                    try {
+                        return service.reverseSearch(geoSearchResult.getLatitude(), geoSearchResult.getLongitude());
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                })
+                .filter(reverseGeoSearchResult -> reverseGeoSearchResult != null)
+                .forEach(reverseGeoSearchResult -> System.out.println(reverseGeoSearchResult.toString()));
     }
 }
